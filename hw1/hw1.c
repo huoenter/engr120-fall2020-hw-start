@@ -1,6 +1,6 @@
 /* Returns the sum of a and b */
 int add(int a, int b) {
-    return -1;
+    return a + b;
 }
 
 /* Returns the sum of numbers in [lower, upper]
