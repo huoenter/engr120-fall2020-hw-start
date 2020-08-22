@@ -3,7 +3,7 @@
 
 #define DELTA 0.01
 
-int test_int(int e, int a, char *am)
+int test_int(int a, int e, char *am)
 {
     if (e == a) {
         printf("PASSED\t%s should be %d\n", am, e);
@@ -14,7 +14,7 @@ int test_int(int e, int a, char *am)
     }
 }
 
-int test_double(double e, double a, char *am)
+int test_double(double a, double e, char *am)
 {
     if (fabs(e - a) < DELTA) {
         printf("PASSED\t%s should be %lf\n", am, e);
