@@ -26,26 +26,26 @@ To run the test, both the style check and tests, type `make`
 
 ```
 > make
+gcc -o main main.c hw1.c
 ./checker hw1.c
 ./main
 
 
 ===Begin TESTING===
 
-FAILED  add(0, 0) should be -1, your answer is 0
-FAILED  add(3, 4) should be -1, your answer is 7
-FAILED  add(-14, 4) should be -1, your answer is -10
-FAILED  range_sum(1, 4) should be -1, your answer is 10
-FAILED  range_sum(11, 16) should be -1, your answer is 81
-FAILED  range_sum(4, 1) should be -1, your answer is 0
-FAILED  range_sum(-4, -3) should be -1, your answer is -7
-FAILED  square_sum(1, 1) should be -1, your answer is 1
-FAILED  square_sum(1, 0) should be -1, your answer is 0
-FAILED  square_sum(5, 8) should be -1, your answer is 174
-FAILED  square_sum(-4, -2) should be -1, your answer is 29
-FAILED  square_sum(-2, -4) should be -1, your answer is 0
-FAILED  fare(3.2, 4.5) should be -1.000000, your answer is 19.400000
-FAILED  fare(1.7, 2.2) should be -1.000000, your answer is 8.740000
-FAILED  fare(0.5, 3.3) should be -1.000000, your answer is 6.650000
->
+FAILED  add(0, 0) should be 0, your answer is -1
+FAILED  add(3, 4) should be 7, your answer is -1
+FAILED  add(-14, 4) should be -10, your answer is -1
+FAILED  range_sum(1, 4) should be 10, your answer is -1
+FAILED  range_sum(11, 16) should be 81, your answer is -1
+FAILED  range_sum(4, 1) should be 0, your answer is -1
+FAILED  range_sum(-4, -3) should be -7, your answer is -1
+FAILED  square_sum(1, 1) should be 1, your answer is -1
+FAILED  square_sum(1, 0) should be 0, your answer is -1
+FAILED  square_sum(5, 8) should be 174, your answer is -1
+FAILED  square_sum(-4, -2) should be 29, your answer is -1
+FAILED  square_sum(-2, -4) should be 0, your answer is -1
+FAILED  fare(3.2, 4.5) should be 19.400000, your answer is -1.000000
+FAILED  fare(1.7, 2.2) should be 8.740000, your answer is -1.000000
+FAILED  fare(0.5, 3.3) should be 6.650000, your answer is -1.000000
 ```
