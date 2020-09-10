@@ -48,10 +48,10 @@ def check_line(filename, line, n):
         print("STYLE: File {}, line {}: [TOO LONG ({} CHARS)]:\n{}"
                 .format(filename, n, len(line), line))
     #if comma_space.search(line):
-    if comma_space.search(re.sub('\".+\"', '', line)):
+    if comma_space.search(re.sub('(\".+\"|\'.+\')', '', line)):
         print("STYLE: File {}, line {}: [PUT SPACE AFTER COMMA]:\n{}"
                 .format(filename, n, line))
-    if operator_space.search(re.sub('\".+\"', '', line)):
+    if operator_space.search(re.sub('(\".+\"|\'.+\')', '', line)):
     # if operator_space.search(line):
         if not comment_line.search(line):
             print("STYLE: File {}, line {}: [PUT SPACE AROUND OPERATORS]:\n{}"
