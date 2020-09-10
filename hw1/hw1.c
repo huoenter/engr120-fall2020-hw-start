@@ -9,7 +9,14 @@ int add(int a, int b) {
  */
 int range_sum(int lower, int upper)
 {
-    return -1;
+    int sum = 0;
+
+    while (lower <= upper) {
+        sum += lower;
+        lower++;
+    }
+
+    return sum;
 }
 
 /* Returns the sum of squared numbers in [lower, upper]
@@ -18,7 +25,14 @@ int range_sum(int lower, int upper)
  */
 int square_sum(int lower, int upper)
 {
-    return -1;
+    int sum = 0;
+
+    while (lower <= upper) {
+        sum += lower * lower;
+        lower++;
+    }
+
+    return sum;
 }
 
 /* Returns the fare of a taxi trip
@@ -31,5 +45,5 @@ int square_sum(int lower, int upper)
  */
 double fare(double miles, double rate)
 {
-    return -1.0;
+    return miles * rate + 5.0;
 }
