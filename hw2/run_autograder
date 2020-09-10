@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# cp /autograder/source/test_data/* /autograder/source/
+
+# Prepare submission
+cp /autograder/submission/*.c /autograder/source/
+# cp fake_submission/*.c "source/"
+
+cd /autograder/source
+# cd "source/"
+
+make clean
+
+python3 run_tests.py > /autograder/results/results.json
