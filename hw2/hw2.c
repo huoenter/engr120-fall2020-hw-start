@@ -69,7 +69,7 @@ int squeeze(char s[], char t[], char c) {
  * Instead of reverse which reverses a whole string.
  * reverse_n will only reverse the first n characters.
  *
- * Example, reverse_n("abcdef", 3) will change s to "abc".
+ * Example, reverse_n("abcdef", 3) will change s to "cbadef".
  * reverse("abc", 0) will not change s.
  *
  * Assume n will never be greater than the size of s.
