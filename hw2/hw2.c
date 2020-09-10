@@ -108,7 +108,19 @@ int mystrcmp(char s[], char t[]) {
  * squeeze("hello", t, 'l') return 2 and t will be "heo".
  */
 int squeeze(char s[], char t[], char c) {
-    return 0;
+    int i = 0, j = 0, cnt = 0;
+    while (s[i] != '\0') {
+        if (s[i] != c) {
+            t[j] = s[i];
+            j++;
+        } else {
+            cnt++;
+        }
+        i++;
+    }
+    t[j] = '\0';
+
+    return cnt;
 }
 
 /* You should've read ch3.5.
@@ -123,4 +135,12 @@ int squeeze(char s[], char t[], char c) {
  * Take look at main.c to see how reverse_n is used.
  */
 void reverse_n(char s[], int n) {
+    int i = 0, j = n - 1, c;
+    while (i < j) {
+        c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+        i++;
+        j--;
+    }
 }

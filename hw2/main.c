@@ -81,5 +81,20 @@ int main(void) {
     test_int(mystrcmp("abcd", "abCd"), 1, "mystrcmp(\"abcd\", \"abCd\")");
     test_int(mystrcmp("abcd", "abcd"), 0, "mystrcmp(\"abcd\", \"abcd\")");
 
+    char t[100];
+    ret = squeeze("abcd", t, 'c');
+    test_int(ret, 1, "squeeze(\"abcd\", t, 'c')");
+    test_str(t, "abd", "squeeze(\"abcd\", t, 'c')");
+
+    ret = squeeze("Hello", t, 'l');
+    test_int(ret, 2, "squeeze(\"Hello\", t, 'l')");
+    test_str(t, "Heo", "squeeze(\"Hello\", t, 'l')");
+
+    reverse_n(strcpy(s, "abcdef"), 3);
+    test_str(s, "cbadef", "reverse_n(strcpy(s, \"abcdef\"), 3)");
+
+    reverse_n(strcpy(s, "Hello"), 4);
+    test_str(s, "lleHo", "reverse_n(strcpy(s, \"Hello\"), 4)");
+
     return 0;
 }
