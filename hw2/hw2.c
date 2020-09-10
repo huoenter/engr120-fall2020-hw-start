@@ -2,7 +2,8 @@
  *        -1 when rator2 has higher precedence,
  *         0 when they have equal precedence.
  * Example, precedence('!', '|') returns 1
- * Please refer to the single character operators on page 53, table 2-1
+ * Please refer to ALL the single character operators on page 53, table 2 - 1
+ * except '*', '&', '+', '-' on the SECOND row
  *
  * Hint: Add a new function that takes in an operator and
  * returns a number to represent the precedence. Use a switch statement in it.
@@ -12,7 +13,7 @@ int precedence(char rator1, char rator2) {
 }
 
 /* Rewrite strcat on page 48 using for loops only */
-void strcat(char s[], char t[]) {
+void mystrcat(char s[], char t[]) {
 }
 
 /* This is an enhanced version of lower on page 43
@@ -33,8 +34,8 @@ int lower(char s[]) {
  *
  * s and t are equal if each character at the same position is equal.
  *
- * If the first n characters match and the n+1th characters are the
- * first non-matching ones, then
+ * If the first n characters match and the n + 1th characters are the
+ * first nonmatching ones, then
  *    if s[n] < t[n], s is less than t
  *    if s[n] > t[n], s is greater than t
  * e.g. "abc" is less than "abd"
@@ -42,7 +43,7 @@ int lower(char s[]) {
  *
  * Please watch the video about "strcmp" on D2L first.
  */
-int strcmp(char s[], char t[]) {
+int mystrcmp(char s[], char t[]) {
     return 0;
 }
 
@@ -57,7 +58,7 @@ int strcmp(char s[], char t[]) {
  * Finally it returns number of squeezed characters.
  *
  * Example:
- * char t[10];  // t defined somewhere
+ * char t[10];
  * squeeze("hello", t, 'l') return 2 and t will be "heo".
  */
 int squeeze(char s[], char t[], char c) {

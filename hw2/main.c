@@ -38,11 +38,11 @@ int test_double(double a, double e, char *am)
 
 int precedence(char rator1, char rator2);
 
-void strcat(char s[], char t[]);
+void mystrcat(char s[], char t[]);
 
 int lower(char s[]);
 
-int strcmp(char s[], char t[]);
+int mystrcmp(char s[], char t[]);
 
 int squeeze(char s[], char t[], char c);
 
@@ -58,8 +58,8 @@ int main(void) {
 
     int ret;
     char s[100];
-    strcpy(s, "abc");
-    test_str(strcat(s, "def"), "abcdef", "strcat(\"abc\", \"def\")");
+    mystrcat(strcpy(s, "abc"), "def");
+    test_str(s, "abcdef", "mystrcat(\"abc\", \"def\")");
 
     strcpy(s, "HellO");
     ret = lower(s);
@@ -76,15 +76,25 @@ int main(void) {
     test_str(s, "$ch0ol", "lower(\"$ch0ol\")");
     test_int(ret, 1, "lower(\"$ch0ol\")");
 
-    test_int(strcmp("abc", "def"), -1, "strcmp(\"abc\", \"def\")");
-    test_int(strcmp("abcxxx", "abd"), -1, "strcmp(\"abcxxx\", \"abd\")");
-    test_int(strcmp("abcd", "abCd"), 1, "strcmp(\"abcd\", \"abCd\")");
-    test_int(strcmp("abcd", "abcd"), 0, "strcmp(\"abcd\", \"abcd\")");
+    test_int(mystrcmp("abc", "def"), -1, "mystrcmp(\"abc\", \"def\")");
+    test_int(mystrcmp("abcxxx", "abd"), -1, "mystrcmp(\"abcxxx\", \"abd\")");
+    test_int(mystrcmp("abcd", "abCd"), 1, "mystrcmp(\"abcd\", \"abCd\")");
+    test_int(mystrcmp("abcd", "abcd"), 0, "mystrcmp(\"abcd\", \"abcd\")");
 
-int strcmp(char s[], char t[]);
+    char t[100];
+    ret = squeeze("abcd", t, 'c');
+    test_int(ret, 1, "squeeze(\"abcd\", t, 'c')");
+    test_str(t, "abd", "squeeze(\"abcd\", t, 'c')");
 
-int squeeze(char s[], char t[], char c);
+    ret = squeeze("Hello", t, 'l');
+    test_int(ret, 2, "squeeze(\"Hello\", t, 'l')");
+    test_str(t, "Heo", "squeeze(\"Hello\", t, 'l')");
 
-void reverse_n(char s[], int n);
+    reverse_n(strcpy(s, "abcdef"), 3);
+    test_str(s, "cbadef", "reverse_n(strcpy(s, \"abcdef\"), 3)");
+
+    reverse_n(strcpy(s, "Hello"), 4);
+    test_str(s, "lleHo", "reverse_n(strcpy(s, \"Hello\"), 4)");
+
     return 0;
 }
