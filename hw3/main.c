@@ -42,7 +42,7 @@ int test_double_arr(double a[], double e[], char *am, int n)
     char msg[100];
     for (int i = 0; i < n; i++) {
         if (fabs(e[i] - a[i]) >= DELTA) {
-            printf("a[%d] should be %lf, you have %lf.\n", i, e[i], a[i]);
+            printf("FAILED a[%d] should be %lf, you have %lf.\n", i, e[i], a[i]);
             return 0;
         }
     }
