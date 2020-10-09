@@ -10,7 +10,18 @@
  */
 int substring_n(char *s, char *t)
 {
-    return -1;
+    int cnt = 0, i = 0;
+
+    while (*(s + i) != '\0') {
+        int j = 0;
+        while (*(s + i + j) == *(t + j) && *(s + i + j) != '\0')
+            j++;
+        if (*(t + j) == '\0')
+            cnt++;
+        i++;
+    }
+
+    return cnt;
 }
 
 /* Changes all occurrences of t in s to u, result stored in v
@@ -27,6 +38,21 @@ int substring_n(char *s, char *t)
 
 void replace(char *s, char *t, char *u, char *v)
 {
+    int i = 0, k = 0;
+    while (*(s + i) != '\0') {
+        int j = 0;
+        while (*(s + i + j) == *(t + j) && *(s + i + j) != '\0')
+            j++;
+        if (*(t + j) == '\0') {
+            int n = 0;
+            while (*(u + n) != '\0')
+                v[k++] = u[n++];
+            i += j;
+        } else
+            v[k++] = s[i++];
+    }
+
+    v[k] = '\0';
 }
 
 /*
@@ -65,19 +91,40 @@ Make use of even_sum and odd_sum for summing up odd and even digits from the
 code and return the sum.
 */
 
-int even_sum(int code[])
-{
-  return -1;
+#define N 12
+
+int oddSum(int code[]) {
+  int sum = 0;
+  for (int i = 0; i< N - 1; i += 2) {
+    sum += code[i];
+  }
+
+  return sum;
 }
 
-int odd_sum(int code[])
-{
-  return -1;
+int evenSum(int code[]) {
+  int sum = 0;
+  for (int i = 1; i< N - 1; i += 2) {
+    sum += code[i];
+  }
+
+  return sum;
 }
 
-int validate(int code[])
-{
-  return -2;
+int validate(int code[]) {
+  int check_digit = 0;
+
+  int sum = 3 * oddSum(code) + evenSum(code);
+
+  if (sum % 10 == 0)
+    check_digit = 0;
+  else
+    check_digit = 10 - (sum % 10);
+
+  if (code[N - 1] == check_digit)
+    return -1;
+
+  return check_digit;
 }
 
 /*
@@ -130,38 +177,65 @@ return a value of 0. Be sure to check for this, and then scan the question mark
 into a character variable before proceeding with the remaining prompts
 
 */
-void calc_t1(double values[])
-{
-  /* calucate t1 using the other 5 values, store t1 in values[4] */
+void calc_h(double values[]) {
+  double h = values[0], k = values[1], a = values[2],
+         t2 = values[3], t1 = values[4], X = values[5];
+  values[0] =  k * a * (t2 - t1) / X;
 }
-/* five other similar calc_  functions here */
+
+void calc_k(double values[]) {
+  double h = values[0], a = values[2],
+         t2 = values[3], t1 = values[4], X = values[5];
+  values[1] = h * X / (a * (t2 - t1));
+}
+
+void calc_a(double values[]) {
+  double h = values[0], k = values[1],
+         t2 = values[3], t1 = values[4], X = values[5];
+  values[2] = h * X / (k * (t2 - t1));
+}
+
+void calc_t2(double values[]) {
+  double h = values[0], k = values[1], a = values[2],
+         t1 = values[4], X = values[5];
+  values[3] = (h * X / (k * a)) + t1;
+}
+
+void calc_t1(double values[]) {
+  double h = values[0], k = values[1], a = values[2],
+         t2 = values[3], X = values[5];
+  values[4] = t2 - (h * X / (k * a));
+}
+
+void calc_X(double values[]) {
+  double h = values[0], k = values[1], a = values[2],
+         t2 = values[3], t1 = values[4];
+  values[5] = k * a * (t2 - t1) / h;
+}
 
 void heat_transfer(double values[], FILE *input)
 {
-  /* some code */
+    int statuses[6] = {0};
 
-  /* An example how to read in a possibly missing T1 */
-  int status_t1;
+    char dummy; /* used to discard the question mark */
 
-  char dummy; /* used to discard the question mark */
+    int missing = -1;
 
-  /* use fscanf to read in T1 which is values[4] */
-  status_t1 = fscanf(input, "%lf", values + 4);
-  /* return value of fscanf indicates the number of items being read
-   * in this case, if it returns 1, then T1 is read which implies T1
-   * is not the question mark.
-   */
+    for (int i = 0; i < 6; i++) {
+        statuses[i] = fscanf(input, "%lf", values + i);
+        if (statuses[i] == 0) {
+            fscanf(input, "%c", &dummy);
+            missing = i;
+        }
+    }
 
-  /* check return value, if 0, T1 is not read,
-   * then we encounter a question mark */
-  if (status_t1 == 0)
-    scanf("%c", &dummy); /* get rid of the question mark */
-
-  /* continue to read other values */
-
-  if (status_t1 == 0) /* check this again to see if t1 needs to be computed */
-      calc_t1(values);
-  /* Note this must happen AFTER reading in all the other values
-   * otherwise you don't have enough to compute t1
-   */
+    switch (missing) {
+        case 0: calc_h(values); break;
+        case 1: calc_k(values); break;
+        case 2: calc_a(values); break;
+        case 3: calc_t2(values); break;
+        case 4: calc_t1(values); break;
+        case 5: calc_X(values); break;
+        default: break;
+    }
 }

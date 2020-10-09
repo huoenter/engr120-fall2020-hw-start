@@ -2,11 +2,11 @@ import subprocess, json, os, re
 from functools import reduce
 
 PROBLEM = "hw3"
-TOTAL_TEST = 10
+TOTAL_TEST = 21
 
 PEN_PER_FAILURE = 5
 EACH_STYLE_VIOLATION = 5
-MAX_STYLE = 15
+MAX_STYLE = 25
 TOTAL_HW = PEN_PER_FAILURE * TOTAL_TEST
 
 PASS_PHRASE = "PASSED"
