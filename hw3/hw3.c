@@ -155,7 +155,7 @@ void heat_transfer(double values[], FILE *input)
   /* check return value, if 0, T1 is not read,
    * then we encounter a question mark */
   if (status_t1 == 0)
-    scanf("%c", &dummy); /* get rid of the question mark */
+    fscanf(input, "%c", &dummy); /* get rid of the question mark */
 
   /* continue to read other values */
 
