@@ -1,10 +1,6 @@
 #define DELTA 0.0001
 
 /* typedef sci_not_t here */
-typedef struct {
-  double mantissa;
-  int exponent;
-} sci_not_t;
 
 
 sci_not_t fscan_sci_not(FILE *in);

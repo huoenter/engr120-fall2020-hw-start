@@ -1,6 +1,7 @@
 .PHONY: clean test
 
 test: main
+	./checker sci_not.c
 	./main
 
 main: main.o sci_not.o

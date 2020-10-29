@@ -6,7 +6,7 @@
 /*
  * Q1: A number expressed in scientific notation is represented by its mantissa
  * (a fraction - double) and its exponent (an integer). Please read through
- * https://repl.it/@engr120/struct-ex before you start.
+ * "repl.it/@engr120/struct-ex" before you start.
  */
 
 /* Q1.1 Define a type sci_not_t (use typedef) that has
