@@ -67,7 +67,7 @@ sci_not_t product(sci_not_t s1, sci_not_t s2) {
 sci_not_t quotient(sci_not_t s1, sci_not_t s2) {
 }
 
-sci_not_t sci_not_equal(sci_not_t s1, sci_not_t s2) {
+int sci_not_equal(sci_not_t s1, sci_not_t s2) {
     return fabs(s1.mantissa - s2.mantissa) < DELTA &&
            s1.exponent == s2.exponent;
 }

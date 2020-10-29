@@ -9,17 +9,15 @@
 ---
 ## Submission
 
-SAME
+Submit the following files on Gradescope
+
+1. `sci_not.c`
+1. `sci_not.h`
 
 ---
 ## Tests in main
 
 Will have more tests on Gradescope than in this folder
-
----
-## Use Pointers
-
-Notice that pointers and arrays are interchangeable as function parameters.
 
 ---
 ## IMPORTANT: USE Piazza!!!

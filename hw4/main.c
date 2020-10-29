@@ -53,12 +53,14 @@ int test_double_arr(double a[], double e[], char *am, int n)
 
 int test_sci_not(sci_not_t a, sci_not_t e, char *am) {
     if (sci_not_equal(a, e)) {
-        printf("PASSED\t%s should be %lf\n", am, e);
+        printf("PASSED\t%s should be ", am);
+        print_sci_not(e);
+        printf("\n");
         return 1;
     } else {
         printf("FAILED\t%s should be ", am);
         print_sci_not(e);
-        printf("your answer is ");
+        printf(" your answer is ");
         print_sci_not(a);
         printf("\n");
         return 0;
@@ -77,14 +79,29 @@ int main(void) {
     sci_not_t sum = {0.252000, 3};
     test_sci_not(add(s1, s2), sum, "0.25000e3 + 0.20000e1");
 
-    sci_not_t diff = {0.248000, 3};
-    test_sci_not(difference(s1, s2), diff, "0.25000e3 - 0.20000e1");
+    sci_not_t difference = {0.248000, 3};
+    test_sci_not(diff(s1, s2), difference, "0.25000e3 - 0.20000e1");
 
     sci_not_t prod = {0.50000, 3};
     test_sci_not(product(s1, s2), prod, "0.25000e3 * 0.20000e1");
 
     sci_not_t quot = {0.125000, 3};
     test_sci_not(quotient(s1, s2), quot, "0.25000e3 / 0.20000e1");
+
+    sci_not_t s3 = fscan_sci_not(in);
+    sci_not_t s4 = fscan_sci_not(in);
+
+    sci_not_t sum2 = {0.155700, 4};
+    test_sci_not(add(s3, s4), sum2, "0.110200e4 + 0.455000e3");
+
+    sci_not_t difference2 = {0.647000, 3};
+    test_sci_not(diff(s3, s4), difference2, "0.110200e4 - 0.455000e3");
+
+    sci_not_t prod2 = {0.501410, 6};
+    test_sci_not(product(s3, s4), prod2, "0.110200e4 * 0.455000e3");
+
+    sci_not_t quot2 = {0.242198, 1};
+    test_sci_not(quotient(s3, s4), quot2, "0.110200e4 / 0.455000e3");
 
     fclose(in);
 
