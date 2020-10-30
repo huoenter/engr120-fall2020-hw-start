@@ -5,7 +5,8 @@
 
 /*
  * Q1: A number expressed in scientific notation is represented by its mantissa
- * (a fraction - double) and its exponent (an integer). Please read through
+ * (a fraction - double) and its exponent (an integer). The base is 10. 
+ * Please read through
  * "repl.it/@engr120/struct-ex" before you start.
  */
 
@@ -35,7 +36,10 @@ sci_not_t fscan_sci_not(FILE *in) {
     /* fscanf in an int */
 
     /* make a sci_not_t */
-
+    sci_not_t s;
+    s.mantissa = m;
+    s.exponent = e;
+    return s;
 }
 
 /*
@@ -55,10 +59,21 @@ Note that 0.1 <= m < 1.0
 
 */
 
+/* convert sci_not_t to double
+ * do the arithmetic operation in double
+ * convert the result back
+ */
+
 sci_not_t add(sci_not_t s1, sci_not_t s2) {
+    sci_not_t dummy = { 1.0, 1};
+    return dummy;
 }
 
 sci_not_t diff(sci_not_t s1, sci_not_t s2) {
+    double d1 = convert_to_double(s1);
+    double d2 = convert_to_double(s2);
+    double res = d1 - d2;
+    return convert_to_sci_not(res);
 }
 
 sci_not_t product(sci_not_t s1, sci_not_t s2) {
