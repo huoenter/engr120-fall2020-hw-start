@@ -29,10 +29,14 @@ void scan_addresses(address_t arr[], FILE *txt);
  */
 int sentinel(address_t a);
 
-/* read an array of addresses in binary form from f to arr */
+/* Read an array of addresses in binary form from f to arr.
+ * Stops after you encounter a sentinel.
+ */
 void read_addresses(address_t arr[], FILE *f);
 
-/* write an array of addresses in binary form from arr to f */
+/* write an array of addresses in binary form from arr to f
+ * including the sentinel
+ */
 void write_addresses(address_t arr[], FILE *f);
 
 /* print out a single address */
