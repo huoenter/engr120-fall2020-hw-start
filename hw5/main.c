@@ -1,77 +1,42 @@
 #include <stdio.h>
-#include <math.h>
-#include <string.h>
+#include "address.h"
 
-#include "sci_not.h"
-
-int test_int(int a, int e, char *am)
-{
-    if (e == a) {
-        printf("PASSED\t%s should be %d\n", am, e);
-        return 1;
-    } else {
-        printf("FAILED\t%s should be %d, your answer is %d\n", am, e, a);
-        return 0;
-    }
-}
-
-int test_str(char a[], char e[], char *am) {
-    if (strcmp(a, e) == 0) {
-        printf("PASSED\t%s should be %s\n", am, e);
-        return 1;
-    } else {
-        printf("FAILED\t%s should be %s, your answer is %s\n", am, e, a);
-        return 0;
-    }
-}
-
-int test_double(double a, double e, char *am)
-{
-    if (fabs(e - a) < DELTA) {
-        printf("PASSED\t%s should be %lf\n", am, e);
-        return 1;
-    } else {
-        printf("FAILED\t%s should be %lf, your answer is %lf\n", am, e, a);
-        return 0;
-    }
-}
-
-int test_double_arr(double a[], double e[], char *am, int n)
-{
-    double delta = 1.0;
-    char msg[100];
-    for (int i = 0; i < n; i++) {
-        if (fabs(e[i] - a[i]) >= DELTA) {
-            printf("FAILED a[%d] should be %lf, you have %lf.\n", i, e[i], a[i]);
-            return 0;
-        }
-    }
-
-    printf("PASSED %s\n", am);
-    return 1;
-}
-
-int test_sci_not(sci_not_t a, sci_not_t e, char *am) {
-    if (sci_not_equal(a, e)) {
-        printf("PASSED\t%s should be ", am);
-        print_sci_not(e);
-        printf("\n");
-        return 1;
-    } else {
-        printf("FAILED\t%s should be ", am);
-        print_sci_not(e);
-        printf(" your answer is ");
-        print_sci_not(a);
-        printf("\n");
-        return 0;
-    }
-}
-
+#define N 5
 
 int main(void) {
     printf("\n\n===Begin TESTING===\n\n");
 
-    fclose(in);
+    address_t ans[5] = {
+        {1, 2, 3, 4, "a"},
+        {21, 34, 11, 111, "b"},
+        {89, 221, 81, 33, "cse"},
+        {67, 242, 11, 0, "john"},
+        {0, 0, 0, 0, "end"}
+    };
+
+    address_t as[NADDR];
+
+    FILE *txt = fopen(TXT_INPUT, "r");
+
+    scan_addresses(as, txt);
+
+    fclose(txt);
+
+    FILE *f = fopen(BIN_FILE, "wb");
+    write_addresses(as, f);
+
+    address_t fas[NADDR];
+    read_addresses(fas, f);
+
+    for (int i = 0; i < N; i++)
+        if (equal_address(fas[i], ans[i]))
+            printf("PASSED Successfuly store/read address %s\n",
+                                                ans[i].nickname);
+        else
+            printf("FAILED Failed to store/read address %s\n",
+                                                ans[i].nickname);
+
+    fclose(f);
 
     return 0;
 }

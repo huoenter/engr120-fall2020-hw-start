@@ -1,17 +1,17 @@
 .PHONY: clean test
 
 test: main
-	./checker sci_not.c
+	./checker address.c
 	./main
 
-main: main.o sci_not.o
-	gcc -o main main.o sci_not.o
+main: main.o address.o
+	gcc -o main main.o address.o
 
-sci_not.o: sci_not.c
-	gcc -c sci_not.c
+address.o: address.c
+	gcc -c address.c
 
 main.o: main.c
 	gcc -c main.c
 
 clean:
-	-@rm -f main
+	-@rm -f main *.o *.bin
