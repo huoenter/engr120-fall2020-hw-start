@@ -24,9 +24,12 @@ int main(void) {
 
     FILE *f = fopen(BIN_FILE, "wb");
     write_addresses(as, f);
+    fclose(f);
 
+    FILE *g = fopen(BIN_FILE, "rb");
     address_t fas[NADDR];
-    read_addresses(fas, f);
+    read_addresses(fas, g);
+    fclose(g);
 
     for (int i = 0; i < N; i++)
         if (equal_address(fas[i], ans[i]))
@@ -35,8 +38,6 @@ int main(void) {
         else
             printf("FAILED Failed to store/read address %s\n",
                                                 ans[i].nickname);
-
-    fclose(f);
 
     return 0;
 }
