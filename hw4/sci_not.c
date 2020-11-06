@@ -2,6 +2,9 @@
 #include <math.h>
 
 #include "sci_not.h"
+#include <math.h>   // import pow
+
+sci_not_t dummy = { 1.0, 1};
 
 /*
  * Q1: A number expressed in scientific notation is represented by its mantissa
@@ -31,15 +34,7 @@
  */
 
 sci_not_t fscan_sci_not(FILE *in) {
-    /* fscanf in a double */
-    /* fscanf in a dummy 'e' */
-    /* fscanf in an int */
-
-    /* make a sci_not_t */
-    sci_not_t s;
-    s.mantissa = m;
-    s.exponent = e;
-    return s;
+    return dummy;
 }
 
 /*
@@ -65,21 +60,20 @@ Note that 0.1 <= m < 1.0
  */
 
 sci_not_t add(sci_not_t s1, sci_not_t s2) {
-    sci_not_t dummy = { 1.0, 1};
     return dummy;
 }
 
 sci_not_t diff(sci_not_t s1, sci_not_t s2) {
-    double d1 = convert_to_double(s1);
-    double d2 = convert_to_double(s2);
-    double res = d1 - d2;
-    return convert_to_sci_not(res);
+   // 2.0 => 0.1 < m <= 1 => { 0.2, 1 }
+   return dummy;
 }
 
 sci_not_t product(sci_not_t s1, sci_not_t s2) {
+   return dummy;
 }
 
 sci_not_t quotient(sci_not_t s1, sci_not_t s2) {
+   return dummy;
 }
 
 int sci_not_equal(sci_not_t s1, sci_not_t s2) {

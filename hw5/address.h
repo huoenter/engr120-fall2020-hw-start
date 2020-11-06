@@ -15,7 +15,7 @@ typedef struct {
   char nickname[10];
 } address_t;
 
-/* read a single address_t from f */
+/* read a single address_t from text file f */
 address_t scan_address(FILE *f);
 
 /* Use scan_address to read multiple addresses

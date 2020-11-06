@@ -5,7 +5,7 @@ test: main
 	./main
 
 main: main.o sci_not.o
-	gcc -o main main.o sci_not.o
+	gcc -o main main.o sci_not.o -lm
 
 sci_not.o: sci_not.c
 	gcc -c sci_not.c
