@@ -29,8 +29,8 @@ int equal_linked(node_t *l1, node_t *l2) {
   while (l1 != NULL && l2 != NULL) {
     if (l1->letter != l2->letter)
       return 0;
-    l1->next = l1;
-    l2->next = l2;
+    l1 = l1->next;
+    l2 = l2->next;
   }
   return l1 == l2;
 }
@@ -58,7 +58,9 @@ void delete_list(node_t **head) {
 
   while (temp != NULL) {
     node_t *nxt = temp->next;
-    free(temp);
+    // commenting out free since it will
+    // cause problems when the hw is not finished
+    //free(temp);
     temp = nxt;
   }
 
