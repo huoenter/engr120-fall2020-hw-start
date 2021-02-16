@@ -3,7 +3,7 @@
 ---
 ## Submission
 
-`address.c`
+`linked.c` ONLY on Gradescope
 
 ---
 ## Tests in main
